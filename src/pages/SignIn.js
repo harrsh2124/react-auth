@@ -5,7 +5,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
     localStorage.setItem("user-token", "abc");
-    navigate("/", {
+    navigate("/dashboard", {
       replace: true,
     });
   };

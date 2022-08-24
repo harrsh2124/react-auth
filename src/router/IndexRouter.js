@@ -1,6 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
-import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import PrivateRouter from "./PrivateRouter";
 import PublicRouter from "./PublicRouter";
@@ -8,14 +7,7 @@ import PublicRouter from "./PublicRouter";
 const IndexRouter = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <PrivateRouter>
-            <Home />
-          </PrivateRouter>
-        }
-      />
+      <Route path="/" element={<Navigate to="/dashboard" replace={true} />} />
       <Route
         path="/dashboard"
         element={
@@ -33,6 +25,8 @@ const IndexRouter = () => {
           </PublicRouter>
         }
       />
+
+      <Route path="*" element={<Navigate to="/dashboard" replace={true} />} />
     </Routes>
   );
 };

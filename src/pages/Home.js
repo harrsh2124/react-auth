@@ -9,8 +9,13 @@ const Home = () => {
       replace: true,
     });
   };
+
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#000",
+      }}
+    >
       Home
       <button onClick={handleSignOut}>Sign Out</button>
     </div>
