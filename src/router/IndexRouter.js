@@ -1,8 +1,10 @@
+import React, { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
-import SignIn from "../pages/SignIn";
 import PrivateRouter from "./PrivateRouter";
 import PublicRouter from "./PublicRouter";
+
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const SignIn = lazy(() => import("../pages/SignIn"));
 
 const IndexRouter = () => {
   return (
@@ -12,7 +14,9 @@ const IndexRouter = () => {
         path="/dashboard"
         element={
           <PrivateRouter>
-            <Dashboard />
+            <Suspense fallback={<>...</>}>
+              <Dashboard />
+            </Suspense>
           </PrivateRouter>
         }
       />
@@ -21,7 +25,9 @@ const IndexRouter = () => {
         path="/signin"
         element={
           <PublicRouter>
-            <SignIn />
+            <Suspense fallback={<>...</>}>
+              <SignIn />
+            </Suspense>
           </PublicRouter>
         }
       />
